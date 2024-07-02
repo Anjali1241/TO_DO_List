@@ -11,6 +11,10 @@ function InputBox({ setTask, task, setShowTable }) {
   };
 
   const addTask = (e) => {
+    if(input==""){
+      alert("please enter task");
+      return true
+    }
     setShowTable(true);
     setTask([...task, { id: Date.now(), FirstName: input }]);
     setInput('');

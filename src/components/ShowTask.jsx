@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import SingleTask from './SingleTask';
+import SingleTask from "./SingleTask";
 
 function ShowTask({ tasks, setTask, showTable }) {
   const updateTask = function (updateId, updateTask) {
@@ -18,7 +18,7 @@ function ShowTask({ tasks, setTask, showTable }) {
 
   return (
     <>
-      {showTable ? (
+      {showTable && tasks.length > 0 ? (
         <>
           <table>
             <thead>
