@@ -7,7 +7,6 @@ export default function App() {
   const [task, setTask] = useState([]);
   const [showTable, setShowTable] = useState(false);
   const deleteAllTasks = () => {
-    console.log(task);
     setTask(task.filter((task) => !task.isChecked));
   };
   return (

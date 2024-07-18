@@ -1,16 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import  { useState } from 'react';
+import  { useRef, useState } from 'react';
 
 function InputBox({ setTask, task, setShowTable }) {
   const [input, setInput] = useState('');
 
+const ref=useRef(null)
+
   const handleOnChange = (e) => {
     setInput(e.target.value);
-    // setTask(e.target.value)
   };
 
   const addTask = (e) => {
+    ref.current.focus()
     if(input==""){
       alert("please enter task");
       return true
@@ -21,7 +23,7 @@ function InputBox({ setTask, task, setShowTable }) {
   };
   return (
     <div className="inputBox">
-      <input type="text" value={input} onChange={handleOnChange} />
+      <input type="text" value={input} onChange={handleOnChange} ref={ref}/>
       <button onClick={addTask}>Create Task</button>
     </div>
   );
