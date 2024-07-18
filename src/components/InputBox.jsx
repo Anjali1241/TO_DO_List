@@ -16,7 +16,7 @@ function InputBox({ setTask, task, setShowTable }) {
       return true
     }
     setShowTable(true);
-    setTask([...task, { id: Date.now(), FirstName: input }]);
+    setTask([...task, { id: Date.now(), FirstName: input,isChecked:false }]);
     setInput('');
   };
   return (

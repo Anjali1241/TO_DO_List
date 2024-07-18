@@ -15,6 +15,17 @@ function ShowTask({ tasks, setTask, showTable }) {
   const deleteTask = function (deleteId) {
     setTask(tasks.filter((task) => task.id !== deleteId));
   };
+  const checkedTask = function (checkedId) {
+    setTask(
+      tasks.map((task) => {
+        if (task.id == checkedId) {
+          console.log(task.isChecked);
+          return { ...task, isChecked: !task.isChecked };
+        }
+        return task;
+      })
+    );
+  };
 
   return (
     <>
@@ -23,6 +34,9 @@ function ShowTask({ tasks, setTask, showTable }) {
           <table>
             <thead>
               <tr>
+                <th>
+                  <input type="checkbox" />
+                </th>
                 <th>FirstName</th>
                 <th>Edit/Update</th>
                 <th>Delete</th>
@@ -38,6 +52,7 @@ function ShowTask({ tasks, setTask, showTable }) {
                     task={task.FirstName}
                     setTask={setTask}
                     deleteTask={deleteTask}
+                    checkedTask={checkedTask}
                   />
                 );
               })}

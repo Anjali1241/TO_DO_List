@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import  { useState } from 'react';
+import { useState } from "react";
 
-function SingleTask({ task, updateTask, id, deleteTask }) {
+function SingleTask({ task, updateTask, id, deleteTask,checkedTask }) {
   const [isEditableMode, setIsEditableMode] = useState(false);
   const [editedValue, setEditedValue] = useState(task);
 
@@ -10,6 +10,9 @@ function SingleTask({ task, updateTask, id, deleteTask }) {
       {isEditableMode ? (
         <>
           <tr>
+            <td>
+              <input type="checkbox" onChange={checkedTask.bind(null,id)}/>
+            </td>
             <td>
               <input
                 value={editedValue}
@@ -30,6 +33,9 @@ function SingleTask({ task, updateTask, id, deleteTask }) {
         </>
       ) : (
         <tr>
+          <td>
+            <input type="checkbox" onChange={checkedTask.bind(null,id)}/>
+          </td>
           <td>{task}</td>
           <td>
             <button onClick={() => setIsEditableMode(true)}>Edit</button>
