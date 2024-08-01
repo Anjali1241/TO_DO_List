@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-function SingleTask({ task, modifyTaskList, id, deleteTask,checkedTask }) {
+function SingleTask({ task, modifyTaskList, id,checkedTask }) {
   const [isEditableMode, setIsEditableMode] = useState(false);
   const [editedValue, setEditedValue] = useState(task);
 
@@ -10,6 +10,10 @@ function SingleTask({ task, modifyTaskList, id, deleteTask,checkedTask }) {
     modifyTaskList({type:"UPDATE TASK",payload:{ id,name: editedValue }});
     setIsEditableMode(false);
   }
+  const deleteTask=() => {
+    modifyTaskList({type:"DELETE TASK",payload: id});
+  }
+
   return (
     <>
       {isEditableMode ? (
@@ -43,7 +47,7 @@ function SingleTask({ task, modifyTaskList, id, deleteTask,checkedTask }) {
             <button onClick={() => setIsEditableMode(true)}>Edit</button>
           </td>
           <td>
-            {/* <button onClick={deleteTask.bind(null, id)}>Delete</button> */}
+            <button onClick={deleteTask}>Delete</button>
           </td>
         </tr>
       )}

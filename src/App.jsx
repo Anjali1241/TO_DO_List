@@ -4,24 +4,28 @@ import "./App.css";
 import ShowTask from "./components/ShowTask";
 import InputBox from "./components/InputBox";
 // import 'bootstrap/dist/css/bootstrap.min.css';
-const reducer=function(state,action){
-if(action.type==="ADD TASK"){
-  return [...state,action.payload]
-}
-if(action.type==="UPDATE TASK"){
-  return state?.map((task) => {
-          if (task.id === action.payload.id) {
-            return action.payload;
-          }
-          return task;
-        })
-}
+const reducer = function (state, action) {
+  if (action.type === "ADD TASK") {
+    return [...state, action.payload]
+  }
+  if (action.type === "UPDATE TASK") {
+    return state?.map((task) => {
+      if (task.id === action.payload.id) {
+        return action.payload;
+      }
+      return task;
+    })
+  }
+  if (action.type === "DELETE TASK") {
+    return state.filter((task) => task.id !== action.payload)
+  }
+  return state
 }
 
 export default function App() {
   // const [task, setTask] = useState([]);
   const [showTable, setShowTable] = useState(false);
-  const [task,dispatchTask]=useReducer(reducer,[])
+  const [task, dispatchTask] = useReducer(reducer, [])
   console.error(task);
   const deleteAllTasks = () => {
     // setTask(task.filter((task) => !task.isChecked));
