@@ -1,30 +1,30 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import  { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
-function InputBox({ setTask, task, setShowTable }) {
+function InputBox({ addTask }) {
   const [input, setInput] = useState('');
 
-const ref=useRef(null)
+  const ref = useRef(null)
 
   const handleOnChange = (e) => {
     setInput(e.target.value);
   };
 
-  const addTask = (e) => {
+  const submitTask = (e) => {
+    addTask({ type: "ADD TASK", payload: { name: input, id: Date.now() } })
     ref.current.focus()
-    if(input==""){
-      alert("please enter task");
+    if (input == "") {
       return true
     }
-    setShowTable(true);
-    setTask([...task, { id: Date.now(), FirstName: input,isChecked:false }]);
+    // setShowTable(true);
+    // setTask([...task, { id: Date.now(), FirstName: input,isChecked:false }]);
     setInput('');
   };
   return (
     <div className="inputBox">
-      <input type="text" value={input} onChange={handleOnChange} ref={ref}/>
-      <button onClick={addTask}>Create Task</button>
+      <input type="text" value={input} onChange={handleOnChange} ref={ref} />
+      <button onClick={submitTask}>Create Task</button>
     </div>
   );
 }
