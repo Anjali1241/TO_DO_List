@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useRef, useState } from 'react';
 
-function InputBox({ addTask }) {
+function InputBox({ addTask,setShowTable }) {
   const [input, setInput] = useState('');
 
   const ref = useRef(null)
@@ -17,7 +17,7 @@ function InputBox({ addTask }) {
     if (input == "") {
       return true
     }
-    // setShowTable(true);
+    setShowTable(true);
     // setTask([...task, { id: Date.now(), FirstName: input,isChecked:false }]);
     setInput('');
   };

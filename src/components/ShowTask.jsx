@@ -43,14 +43,14 @@ function ShowTask({ tasks, setTask, showTable }) {
               </tr>
             </thead>
             <tbody>
-              {tasks.map((task, id) => {
+              {tasks.map((task) => {
                 return (
                   <SingleTask
                     updateTask={updateTask}
-                    key={id}
+                    key={task.id}
                     id={task.id}
-                    task={task.FirstName}
-                    setTask={setTask}
+                    task={task.name}
+                    // setTask={setTask}
                     deleteTask={deleteTask}
                     checkedTask={checkedTask}
                   />

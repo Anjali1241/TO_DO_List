@@ -25,10 +25,10 @@ export default function App() {
         id="firstName"
         // setTask={setTask}
         // task={task}
-        // setShowTable={setShowTable}
+        setShowTable={setShowTable}
         addTask={dispatchTask}
       ></InputBox>
-      {/* <ShowTask tasks={task} setTask={setTask} showTable={showTable} /> */}
+      <ShowTask tasks={task} modifyTaskList={dispatchTask} showTable={showTable} />
       {task.length > 1 && <button onClick={deleteAllTasks}>Delete All</button>}
     </div>
   );
