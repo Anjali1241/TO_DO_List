@@ -1,10 +1,15 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-function SingleTask({ task, updateTask, id, deleteTask,checkedTask }) {
+function SingleTask({ task, modifyTaskList, id, deleteTask,checkedTask }) {
   const [isEditableMode, setIsEditableMode] = useState(false);
   const [editedValue, setEditedValue] = useState(task);
 
+  const update=() => {
+    modifyTaskList({type:"UPDATE TASK",payload:{ id,name: editedValue }});
+    setIsEditableMode(false);
+  }
   return (
     <>
       {isEditableMode ? (
@@ -21,10 +26,7 @@ function SingleTask({ task, updateTask, id, deleteTask,checkedTask }) {
             </td>
             <td>
               <button
-                onClick={() => {
-                  updateTask(id, editedValue);
-                  setIsEditableMode(false);
-                }}
+                onClick={update}
               >
                 update
               </button>
@@ -41,7 +43,7 @@ function SingleTask({ task, updateTask, id, deleteTask,checkedTask }) {
             <button onClick={() => setIsEditableMode(true)}>Edit</button>
           </td>
           <td>
-            <button onClick={deleteTask.bind(null, id)}>Delete</button>
+            {/* <button onClick={deleteTask.bind(null, id)}>Delete</button> */}
           </td>
         </tr>
       )}

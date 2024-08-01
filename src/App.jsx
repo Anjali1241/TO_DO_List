@@ -8,6 +8,14 @@ const reducer=function(state,action){
 if(action.type==="ADD TASK"){
   return [...state,action.payload]
 }
+if(action.type==="UPDATE TASK"){
+  return state?.map((task) => {
+          if (task.id === action.payload.id) {
+            return action.payload;
+          }
+          return task;
+        })
+}
 }
 
 export default function App() {
