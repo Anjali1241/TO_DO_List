@@ -19,16 +19,24 @@ const reducer = function (state, action) {
   if (action.type === "DELETE TASK") {
     return state.filter((task) => task.id !== action.payload)
   }
+  if (action.type === "DELETEALL TASK") {
+    // return state.filter((task) => task.id !== action.payload)
+    state=[]
+  }
   return state
 }
 
 export default function App() {
-  // const [task, setTask] = useState([]);
+  const [tasks, setTask] = useState([]);
   const [showTable, setShowTable] = useState(false);
   const [task, dispatchTask] = useReducer(reducer, [])
   console.error(task);
   const deleteAllTasks = () => {
-    // setTask(task.filter((task) => !task.isChecked));
+    console.log("dlete clear")
+    setTask(task.filter((task) => !task.isChecked));
+    dispatchTask({
+      type:'DELETEALL TASK',payload:[]
+    })
   };
   return (
     <div className="App">
