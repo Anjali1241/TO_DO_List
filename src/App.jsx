@@ -3,7 +3,6 @@ import { useReducer, useState } from "react";
 import "./App.css";
 import ShowTask from "./components/ShowTask";
 import InputBox from "./components/InputBox";
-// import 'bootstrap/dist/css/bootstrap.min.css';
 const reducer = function (state, action) {
   if (action.type === "ADD TASK") {
     return [...state, action.payload]
@@ -20,7 +19,6 @@ const reducer = function (state, action) {
     return state.filter((task) => task.id !== action.payload)
   }
   if (action.type === "DELETEALL TASK") {
-    // return state.filter((task) => task.id !== action.payload)
     state=[]
   }
   return state
@@ -43,8 +41,6 @@ export default function App() {
       <h1>TO-DO List</h1>
       <InputBox
         id="firstName"
-        // setTask={setTask}
-        // task={task}
         setShowTable={setShowTable}
         addTask={dispatchTask}
       ></InputBox>
